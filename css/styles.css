@@ -1,0 +1,328 @@
+ /* Remettre à zéro les marges de tous éléments pour contrecarrer les valeurs par défaut prédéfinies du fureteur */
+ * {
+     margin: 0px;
+     padding: 0px;
+     box-sizing: border-box;
+ }
+
+ /* Classe pour la mise en page utilisant les "flexbox" */
+ .page {
+     /* disposition verticale des sections header, main et footer */
+     display: flex;
+     flex-direction: column;
+     height: 100vh;
+     /* 100% de la hauteur du viewport pour assurer la réactivité verticale */
+     gap: var(--gap);
+     padding: var(--gap);
+     min-width: 500px;
+     max-width: 1000px;
+     margin: auto;
+
+     .favicon {
+         height: 32px;
+         width: 32px;
+     }
+
+     .header,
+     .footer {
+         font-size: 1.5em;
+         font-weight: bolder;
+         display: flex;
+         gap: 8px;
+         align-items: center;
+
+         .menu {
+             /* disposition horizontale des items de menu */
+             display: flex;
+             gap: 12px;
+             flex-wrap: wrap;
+             justify-content: left;
+         }
+
+         .menuItem {
+             flex-grow: 1;
+             /* taille adaptative */
+             font-size: 0.70em;
+             font-weight: bold;
+             text-decoration: none;
+             color: dodgerblue;
+             border: none;
+             text-align: center;
+         }
+
+         .menuItem:hover {
+             color: black;
+         }
+
+         .selectedMenuItem {
+             color: blue;
+         }
+     }
+
+     .main {
+         flex: 1;
+         /* permettre de le formatage flex du parent */
+         min-height: 10vh;
+         /* hauteur minimum relative à la hauteur du viewport*/
+
+         /* contrecarrer les styles de la classe page */
+         border: none;
+         padding: 0px;
+         background: white;
+
+         /* Alignement horizontal des éléments enfants */
+         display: flex;
+         flex-direction: row;
+         gap: var(--gap);
+
+         .scrollSection {
+             overflow-y: auto;
+         }
+
+         .content {
+             flex-grow: 1;
+
+             .bigImage {
+                 background-position: center;
+                 background-repeat: no-repeat;
+                 background-size: cover;
+                 aspect-ratio: 16/9;
+             }
+
+
+             .nanotube {
+                 background-image: url(../images/nanotube.png);
+                 background-size: 100% 50%;
+             }
+
+             .hacker {
+                 background-image: url(../images/hacker.jpg);
+                 background-size: 100% 100%;
+             }
+
+             .computerGood {
+                 background-image: url(../images/computergood.png);
+                 background-size: 80% 100%;
+             }
+
+             .legend {
+                 margin-top: 50px;
+                 margin-bottom: -15%;
+             }
+
+             .video {
+                 width: 100%;
+                 height: 100%;
+                 aspect-ratio: 16/9;
+             }
+         }
+
+         .justifiedText {
+             text-align: justify;
+             margin-top: var(--gap);
+         }
+
+         .ellipsis {
+             white-space: wrap;
+             overflow: hidden;
+             text-overflow: ellipsis;
+         }
+
+         .left_Aside {
+             flex: 1;
+             min-width: 120px;
+             max-width: 140px;
+             font-size: 0.7em;
+             flex-direction: column;
+             display: flex;
+             max-height: none;
+
+             .wikipedia {
+                 background-image: url(../images/wikipedia.png);
+                 aspect-ratio: 1/1;
+                 max-width: 90%;
+             }
+
+             .legend {
+                 max-width: 50px;
+             }
+
+             .duck {
+                 background-image: url(../images/duck.jpg);
+                 background-size: 100% 100%;
+                 min-width: 90%;
+             }
+
+
+
+             .nao {
+                 background-image: url(../images/nao.jpg);
+                 background-size: 100% 100%;
+                 min-width: 90%;
+
+             }
+
+             .legs {
+                 background-image: url(../images/legs.jpg);
+                 background-size: 100% 100%;
+                 min-width: 90%;
+             }
+
+             .roomba {
+                 background-image: url(../images/roomba.jpg);
+                 background-size: 100% 100%;
+                 min-width: 90%;
+
+             }
+
+             .arms {
+                 background-image: url(../images/arms.jpg);
+                 background-size: 100% 100%;
+                 min-width: 90%;
+
+             }
+
+             .smallImage {
+                 background-size: contain;
+                 background-repeat: no-repeat;
+                 margin: auto;
+                 flex: 1;
+                 flex-wrap: wrap;
+                 margin-top: 5px;
+                 background-position: center;
+
+             }
+         }
+
+         .right_Aside {
+             flex: 1;
+             min-width: 70px;
+             max-width: 120px;
+         }
+
+         @media screen and (max-width:600px) {
+
+             .left_Aside,
+             .right_Aside>*,
+             .right_Aside {
+                 max-width: none;
+                 min-width: 100%;
+                 max-height: 15%;
+                 min-height: fit-content;
+                 flex-direction: row;
+                 flex: 1;
+                 display: flex;
+             }
+
+             .ellipsis {
+                 max-width: 90%
+             }
+
+             .left_Aside {
+                 .smallImage {
+                     min-width: 70px;
+                     min-height: 70px;
+                     margin-left: 5px;
+                     margin-top: none;
+                 }
+             }
+
+             .justifiedText {
+                 margin-top: 5px;
+             }
+         }
+     }
+
+     @media screen and (max-width:600px) {
+         .main {
+             flex-direction: column;
+         }
+
+     }
+
+     .main>* {
+         background: white;
+         padding: var(--gap);
+         border: 1px solid gray;
+     }
+ }
+
+ .page>* {
+     /* cibler tout les enfants enfant de l'éléments de classe page */
+     background: lightgray;
+     padding: var(--gap);
+     border: 1px solid gray;
+ }
+
+
+ /* disposer une liste d'icone font-awsome vertivalement */
+ .iconList {
+     display: flex;
+     flex-direction: column;
+     text-align: center;
+     gap: var(--gap);
+ }
+
+ /* style pour formater les icones de classe font-awsome */
+ .fa-icon {
+     flex: 1;
+     font-size: 2em;
+     color: dodgerblue;
+     cursor: pointer;
+ }
+
+ /* Changer la couleur de l'élément survolé de classe fa-icon */
+ .fa-icon:hover {
+     color: blue;
+ }
+
+ @media (min-width:500px) {
+
+     /*** classes pour l'apparence de la barre de défilement ***/
+     ::-webkit-scrollbar {
+         border-radius: var(--border-radius);
+         width: var(--scroolbar-with);
+     }
+
+     ::-webkit-scrollbar-track {
+         box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+         border-radius: var(--border-radius);
+     }
+
+     ::-webkit-scrollbar-thumb {
+         border-radius: var(--border-radius);
+         box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+     }
+
+
+ }
+
+ .author {
+     width: 30%;
+     min-width: 300px;
+     margin: auto;
+     margin-top: 25px;
+     font-size: 1.5em;
+     margin-bottom:25px;
+     ul {
+         list-style-type: none;
+     }
+ }
+
+ .zen-dots-regular {
+     font-family: "Zen Dots", sans-serif;
+     font-weight: 400;
+     font-style: normal;
+     font-size: 2em;
+ }
+
+ .avatar {
+     background-image: url(../images/quagman.png);
+     border-radius: 2000px;
+     margin: auto;
+     margin-top: 25px;
+     width: 35vh;
+     height: 35vh;
+     background-repeat: no-repeat;
+     background-size: cover;
+ }

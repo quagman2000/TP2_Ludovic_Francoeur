@@ -1,0 +1,6 @@
+ /* Définition des constantes */
+ :root {
+     --gap: 10px;
+     --border-radius: 10px;
+     --scroolbar-with: 10px;
+ }
